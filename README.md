@@ -16,4 +16,4 @@ The data for this project is retrieved from [Art Institute of Chicago API](https
 * Data is paginated with one artwork per page
 * For each artwork, title and image are displayed
 
-![image](https://user-images.githubusercontent.com/53233637/117894950-4515bb00-b272-11eb-9d71-f13cafece378.png)
+![image](https://user-images.githubusercontent.com/53233637/117895053-77271d00-b272-11eb-8d5b-c5e0360dc820.png)
