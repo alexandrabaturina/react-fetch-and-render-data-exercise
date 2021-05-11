@@ -28,7 +28,18 @@ const useDataApi = (initialUrl, initialData) => {
     useEffect(() => {
         let didCancel = false;
         const fetchData = async () => {
-            // Part 1, step 1 code goes here
+            // Get data from a remote source
+            dispatch({ type: "FETCH_INIT" });
+            try {
+                const result = await axios(url);
+                if (!didCancel) {
+                    dispatch({ type: "FETCH_SUCCESS", payload: result.data });
+                }
+            } catch (error) {
+                if (!didCancel) {
+                    dispatch({ type: "FETCH_FAILURE" });
+                }
+            };
         };
         fetchData();
         return () => {
