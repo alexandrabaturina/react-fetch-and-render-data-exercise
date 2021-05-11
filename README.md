@@ -7,3 +7,13 @@ This exercise has the following goals:
 * Have practice with [Axios](https://github.com/axios/axios) library
 * Have practice with [useEffect](https://reactjs.org/docs/hooks-effect.html) and [useReducer](https://reactjs.org/docs/hooks-reference.html) React hooks
 * Create client-side pagination
+
+The data for this project is retrieved from [Art Institute of Chicago API](https://api.artic.edu/docs/).
+## Features
+***Impressionist Artworks at The Art Institute of Chicago*** project has the following features:
+* Users are able to select impressionist artists from dropdown list
+* List of artworks for selected artist is downloaded using [Art Institute of Chicago API](https://api.artic.edu/docs/)
+* Data is paginated with one artwork per page
+* For each artwork, title and image are displayed
+
+![image](https://user-images.githubusercontent.com/53233637/117894950-4515bb00-b272-11eb-9d71-f13cafece378.png)
