@@ -1,3 +1,22 @@
+const artists = [
+    {
+        id: 'degas',
+        name: 'Edgar Degas'
+    },
+    {
+        id: 'matisse',
+        name: 'Henry Matisse'
+    },
+    {
+        id: 'monet',
+        name: 'Claude Monet'
+    },
+    {
+        id: 'van-gogh',
+        name: 'Vincent van Gogh'
+    }
+]
+
 const Pagination = ({ items, pageSize, onPageChange }) => {
     // Implement the Pagination component
     const { Button } = ReactBootstrap;
@@ -115,16 +134,15 @@ function App() {
         // New query search
         doFetch(`https://api.artic.edu/api/v1/artworks/search?q=${e.target.value}&&fields=id,title,image_id`)
     }
+
     return (
         <Fragment>
             <form>
                 <label>Select an artist</label>
                 <select onChange={(e) => handleSelect(e)}>
-                    <option id="degas" value="degas">Degas</option>
-                    <option id="matisse" value="matisse">Matisse</option>
-                    <option id="monet" value="monet">Monet</option>
-                    <option id="van-gogh" value="van-gogh">Van Gogh</option>
-
+                    {artists.map((artist) => (
+                        <option key={artist.id} id={artist.id} value={artist.id}>{artist.name}</option>
+                    ))}
                 </select>
             </form>
             {isLoading ? (
