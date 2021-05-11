@@ -93,11 +93,11 @@ const dataFetchReducer = (state, action) => {
 // App that gets data from Hacker News url
 function App() {
     const { Fragment, useState, useEffect, useReducer } = React;
-    const [query, setQuery] = useState('monet');
+    const [query, setQuery] = useState('degas');
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10;
     const [{ data, isLoading, isError }, doFetch] = useDataApi(
-        'https://api.artic.edu/api/v1/artworks/search?q=monet&&fields=id,title,image_id',
+        'https://api.artic.edu/api/v1/artworks/search?q=degas&&fields=id,title,image_id',
         {
             data: [],
         }
@@ -110,8 +110,23 @@ function App() {
         page = paginate(page, currentPage, pageSize);
         console.log(`currentPage: ${currentPage}`);
     }
+
+    const handleSelect = (e) => {
+        // New query search
+        doFetch(`https://api.artic.edu/api/v1/artworks/search?q=${e.target.value}&&fields=id,title,image_id`)
+    }
     return (
         <Fragment>
+            <form>
+                <label>Select an artist</label>
+                <select onChange={(e) => handleSelect(e)}>
+                    <option id="degas" value="degas">Degas</option>
+                    <option id="matisse" value="matisse">Matisse</option>
+                    <option id="monet" value="monet">Monet</option>
+                    <option id="van-gogh" value="van-gogh">Van Gogh</option>
+
+                </select>
+            </form>
             {isLoading ? (
                 <div>Loading ...</div>
             ) : (
