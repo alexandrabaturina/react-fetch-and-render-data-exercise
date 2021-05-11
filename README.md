@@ -16,24 +16,17 @@ The data for this project is retrieved from [Art Institute of Chicago API](https
 * Images are downloaded using [](https://iiif.io/api/image/2.0/)
 * Data is paginated with one artwork per page
 * For each artwork, title and image are displayed
+* Each artwork's title is a link to the page with more detailed information about the artwork
 
-![image](https://user-images.githubusercontent.com/53233637/117895309-ee5cb100-b272-11eb-924e-a3cb9738d35b.png)
+![image](https://user-images.githubusercontent.com/53233637/117896878-67113c80-b276-11eb-97d2-d5a592384106.png)
 
 ### API Calls
-The following query is for getting the the list of artworks for an artist:
-```
-https://api.artic.edu/api/v1/artworks/search?q={artist}
-```
-The following query is for getting artwork image:
-```
-https://www.artic.edu/iiif/2/{identifier}/full/843,/0/default.jpg
-```
-In the project, these two queries are combined together:
+To get the list of artworks for an artist, the following API query is used:
 ```
 https://api.artic.edu/api/v1/artworks/search?q={artist}&&fields=id,title,image_id
 ```
 The response looks like this:
-```sh
+```
 "data": [
   {
     "_score": 254.86807,
@@ -42,6 +35,10 @@ The response looks like this:
     "title": "Water Lilies"
   }
 ]
+```
+To get images, the following URL is used:
+```
+https://www.artic.edu/iiif/2/{image_id}/full/843,/0/default.jpg
 ```
 ## Getting Started
 To run the project locally,
