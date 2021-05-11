@@ -32,7 +32,7 @@ const Pagination = ({ items, pageSize, onPageChange }) => {
     });
     return (
         <nav>
-            <ul className="pagination">{list}</ul>
+            <ul className="pagination justify-content-center">{list}</ul>
         </nav>
     );
 };
@@ -114,7 +114,7 @@ function App() {
     const { Fragment, useState, useEffect, useReducer } = React;
     const [query, setQuery] = useState('degas');
     const [currentPage, setCurrentPage] = useState(1);
-    const pageSize = 10;
+    const pageSize = 1;
     const [{ data, isLoading, isError }, doFetch] = useDataApi(
         'https://api.artic.edu/api/v1/artworks/search?q=degas&&fields=id,title,image_id',
         {

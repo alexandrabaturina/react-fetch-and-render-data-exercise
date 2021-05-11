@@ -41,5 +41,11 @@ ul {
 }
 
 img {
-    width: 70%;
+    width: 40%;
+}
+
+.page-item {
+    background-color: white;
+    border: none;
+    color: gray;
 }
