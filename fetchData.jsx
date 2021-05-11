@@ -100,10 +100,10 @@ function App() {
             {isLoading ? (
                 <div>Loading ...</div>
             ) : (
-                // Part 1, step 2 code goes here
-                <ul>
+                // Style the list using Bootstrap
+                <ul className="list-group">
                     {page.map((item) => (
-                        <li key={item.objectID}>
+                        <li key={item.objectID} className="list-group-item">
                             <a href={item.url}>{item.title}</a>
                         </li>
                     ))}
