@@ -13,10 +13,36 @@ The data for this project is retrieved from [Art Institute of Chicago API](https
 ***Impressionist Artworks at The Art Institute of Chicago*** project has the following features:
 * Users are able to select impressionist artists from dropdown list
 * List of artworks for selected artist is downloaded using [Art Institute of Chicago API](https://api.artic.edu/docs/)
+* Images are downloaded using [](https://iiif.io/api/image/2.0/)
 * Data is paginated with one artwork per page
 * For each artwork, title and image are displayed
 
-![image](https://user-images.githubusercontent.com/53233637/117895053-77271d00-b272-11eb-8d5b-c5e0360dc820.png)
+![image](https://user-images.githubusercontent.com/53233637/117895309-ee5cb100-b272-11eb-924e-a3cb9738d35b.png)
+
+### API Calls
+The following query is for getting the the list of artworks for an artist:
+```
+https://api.artic.edu/api/v1/artworks/search?q={artist}
+```
+The following query is for getting artwork image:
+```
+https://www.artic.edu/iiif/2/{identifier}/full/843,/0/default.jpg
+```
+In the project, these two queries are combined together:
+```
+https://api.artic.edu/api/v1/artworks/search?q={artist}&&fields=id,title,image_id
+```
+The response looks like this:
+```sh
+"data": [
+  {
+    "_score": 254.86807,
+    "id": 16568,
+    "image_id": "3c27b499-af56-f0d5-93b5-a7f2f1ad5813",
+    "title": "Water Lilies"
+  }
+]
+```
 ## Getting Started
 To run the project locally,
 1. Clone this repo.
