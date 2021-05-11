@@ -132,7 +132,8 @@ function App() {
 
     const handleSelect = (e) => {
         // New query search
-        doFetch(`https://api.artic.edu/api/v1/artworks/search?q=${e.target.value}&&fields=id,title,image_id`)
+        doFetch(`https://api.artic.edu/api/v1/artworks/search?q=${e.target.value}&&fields=id,title,image_id`);
+        setCurrentPage(1);
     }
 
     return (
@@ -140,8 +141,8 @@ function App() {
             <form id="select-artist">
                 <label>Select an artist</label>
                 <select onChange={(e) => handleSelect(e)}>
-                    {artists.map((artist) => (
-                        <option key={artist.id} id={artist.id} value={artist.id}>{artist.name}</option>
+                    {artists.map(({ id, name }) => (
+                        <option key={id} value={id}>{name}</option>
                     ))}
                 </select>
             </form>
@@ -149,11 +150,11 @@ function App() {
                 <div>Loading ...</div>
             ) : (
                 <ul>
-                    {page.map((item) => (
-                        <li key={item.id} className="list-item">
-                            <h2>{item.title}</h2>
+                    {page.map(({ id, title, image_id }) => (
+                        <li key={id} className="list-item">
+                            <h2>{title}</h2>
                             <div className="image-wrapper">
-                                <img src={`https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`} />
+                                <img src={`https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`} />
                             </div>
                         </li>
                     ))}
