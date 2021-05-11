@@ -137,7 +137,7 @@ function App() {
 
     return (
         <Fragment>
-            <form>
+            <form id="select-artist">
                 <label>Select an artist</label>
                 <select onChange={(e) => handleSelect(e)}>
                     {artists.map((artist) => (
@@ -150,9 +150,11 @@ function App() {
             ) : (
                 <ul>
                     {page.map((item) => (
-                        <li key={item.id} className="item-list">
-                            <div>{item.title}</div>
-                            <img src={`https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`} />
+                        <li key={item.id} className="list-item">
+                            <h2>{item.title}</h2>
+                            <div className="image-wrapper">
+                                <img src={`https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`} />
+                            </div>
                         </li>
                     ))}
                 </ul>
