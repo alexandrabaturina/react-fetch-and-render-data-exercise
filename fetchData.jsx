@@ -152,9 +152,11 @@ function App() {
                 <ul>
                     {page.map(({ id, title, image_id }) => (
                         <li key={id} className="list-item">
-                            <h2>{title}</h2>
+                            <a href={`https://www.artic.edu/artworks/${id}`}><h2>{title}</h2></a>
                             <div className="image-wrapper">
-                                <img src={`https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`} />
+                                <img
+                                    src={`https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`}
+                                    alt={title} />
                             </div>
                         </li>
                     ))}
