@@ -93,19 +93,19 @@ const dataFetchReducer = (state, action) => {
 // App that gets data from Hacker News url
 function App() {
     const { Fragment, useState, useEffect, useReducer } = React;
-    const [query, setQuery] = useState('MIT');
+    const [query, setQuery] = useState('monet');
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10;
     const [{ data, isLoading, isError }, doFetch] = useDataApi(
-        'https://hn.algolia.com/api/v1/search?query=MIT',
+        'https://api.artic.edu/api/v1/artworks/search?q=monet&&fields=id,title,image_id',
         {
-            hits: [],
+            data: [],
         }
     );
     const handlePageChange = (e) => {
         setCurrentPage(Number(e.target.textContent));
     };
-    let page = data.hits;
+    let page = data.data;
     if (page.length >= 1) {
         page = paginate(page, currentPage, pageSize);
         console.log(`currentPage: ${currentPage}`);
@@ -115,17 +115,17 @@ function App() {
             {isLoading ? (
                 <div>Loading ...</div>
             ) : (
-                // Style the list using Bootstrap
-                <ul className="list-group">
+                <ul>
                     {page.map((item) => (
-                        <li key={item.objectID} className="list-group-item">
-                            <a href={item.url}>{item.title}</a>
+                        <li key={item.id} className="item-list">
+                            <div>{item.title}</div>
+                            <img src={`https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`} />
                         </li>
                     ))}
                 </ul>
             )}
             <Pagination
-                items={data.hits}
+                items={data.data}
                 pageSize={pageSize}
                 onPageChange={handlePageChange}
             ></Pagination>
