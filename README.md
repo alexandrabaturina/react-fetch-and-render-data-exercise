@@ -17,3 +17,8 @@ The data for this project is retrieved from [Art Institute of Chicago API](https
 * For each artwork, title and image are displayed
 
 ![image](https://user-images.githubusercontent.com/53233637/117895053-77271d00-b272-11eb-8d5b-c5e0360dc820.png)
+## Getting Started
+To run the project locally,
+1. Clone this repo.
+2. ```cd``` into current directory.
+3. Run ```index.html``` on local server.
